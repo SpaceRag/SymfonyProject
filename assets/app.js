@@ -8,7 +8,7 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
 import './styles/header.scss';
-import './styles/offer.scss';
-
+import './styles/herobanner.scss';
+import './styles/home.scss';
 // start the Stimulus application
 
