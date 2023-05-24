@@ -32,6 +32,10 @@ class Ride
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $created = null;
 
+    #[ORM\ManyToOne(inversedBy: 'rides')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?user $driver = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +109,18 @@ class Ride
     public function setCreated(\DateTimeInterface $created): self
     {
         $this->created = $created;
+
+        return $this;
+    }
+
+    public function getDriver(): ?user
+    {
+        return $this->driver;
+    }
+
+    public function setDriver(?user $driver): self
+    {
+        $this->driver = $driver;
 
         return $this;
     }
