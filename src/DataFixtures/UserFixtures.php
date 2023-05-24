@@ -28,6 +28,7 @@ class UserFixtures extends AbstractFixture
 
 						// Enregistre le produit fraîchement créé, à faire à chaque tour de boucle
             $manager->persist($user);
+            $this->setReference('owner_' . $i, $user);
         }
 
 				// Une fois la boucle terminée je persiste les produits fraîchement créés
