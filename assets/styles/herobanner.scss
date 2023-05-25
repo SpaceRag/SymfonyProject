@@ -1,4 +1,7 @@
 .heroBanner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;  
   height: 550px;
   width: 100vw;
   background-color: aquamarine;
@@ -7,7 +10,7 @@
   background-size: contain;
 }
 
-h1 {
+.heroTitle {
   color: white;
   font-weight: 500;
   font-size: 5rem;
