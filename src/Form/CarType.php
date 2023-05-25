@@ -2,30 +2,28 @@
 
 namespace App\Form;
 
-use App\Entity\User;
+use App\Entity\Car;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class CarType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
-            ->add('password')
-            ->add('roles')
-            ->add('first_name')
-            ->add('last_name')
+            ->add('brand')
+            ->add('model')
+            ->add('seats')
             ->add('created')
-            ->add('phone')
+            ->add('owner')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Car::class,
         ]);
     }
 }
