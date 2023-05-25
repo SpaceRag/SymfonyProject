@@ -5,6 +5,8 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Faker\Factory;
 use Faker\Generator;
+use Symfony\Component\Form\Extension\PasswordHasher\Type\PasswordTypePasswordHasherExtension;
+use Symfony\Component\PasswordHasher\PasswordHasherInterface;
 
 abstract class AbstractFixture extends Fixture
 {

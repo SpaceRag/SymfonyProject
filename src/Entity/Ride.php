@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RideRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -15,7 +17,7 @@ class Ride
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $departure = null;
+    private ?string $depart = null;
 
     #[ORM\Column(length: 255)]
     private ?string $destination = null;
@@ -34,21 +36,29 @@ class Ride
 
     #[ORM\ManyToOne(inversedBy: 'rides')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $driver = null;
+    private ?User $driver = null;
+
+    #[ORM\ManyToMany(targetEntity: Rule::class, inversedBy: 'rides')]
+    private Collection $rules;
+
+    public function __construct()
+    {
+        $this->rules = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDeparture(): ?string
+    public function getDepart(): ?string
     {
-        return $this->departure;
+        return $this->depart;
     }
 
-    public function setDeparture(string $departure): self
+    public function setDepart(string $depart): self
     {
-        $this->departure = $departure;
+        $this->depart = $depart;
 
         return $this;
     }
@@ -113,14 +123,38 @@ class Ride
         return $this;
     }
 
-    public function getDriver(): ?user
+    public function getDriver(): ?User
     {
         return $this->driver;
     }
 
-    public function setDriver(?user $driver): self
+    public function setDriver(?User $driver): self
     {
         $this->driver = $driver;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Rule>
+     */
+    public function getRules(): Collection
+    {
+        return $this->rules;
+    }
+
+    public function addRule(Rule $rule): self
+    {
+        if (!$this->rules->contains($rule)) {
+            $this->rules->add($rule);
+        }
+
+        return $this;
+    }
+
+    public function removeRule(Rule $rule): self
+    {
+        $this->rules->removeElement($rule);
 
         return $this;
     }

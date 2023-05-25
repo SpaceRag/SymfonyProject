@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Car;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class CarFixtures extends AbstractFixture implements DependentFixtureInterface
 {
@@ -17,8 +18,7 @@ class CarFixtures extends AbstractFixture implements DependentFixtureInterface
             $car->setSeats($this->faker->numberBetween());
             $car->setCreated($this->faker->dateTime());
 
-            // Pour définir la catégorie en relation avec mon produit j'utilise la méthode getReference
-            $car->setOwner($this->getReference("owner_" . $this->faker->numberBetween(1, 7)));
+            $car->setOwner($this->getReference("user_" . $this->faker->numberBetween(1, 7)));
 
             $manager->persist($car);
         }
@@ -26,10 +26,10 @@ class CarFixtures extends AbstractFixture implements DependentFixtureInterface
         $manager->flush();
     }
 
-    public function getDependencies()
+    public function getDependencies()   
     {
         return [
-            CategoryFixtures::class,
+            UserFixtures::class,
         ];
     }
 }

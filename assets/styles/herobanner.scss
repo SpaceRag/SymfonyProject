@@ -3,4 +3,16 @@
     width: 100vw;
     background-color: aquamarine;
     background-image: url(../../public/media/background_remover_hero_banner_png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+h1 {
+    color: white;
+    font-weight: 500;
+    font-size: 5rem;
+    position: fixed;
+    margin-left: 45rem;
+    margin-right: 10rem;
+    margin-top: 150px;
 }
