@@ -6,7 +6,7 @@ use App\Entity\Car;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class CarFixtures extends AbstractFixture implements DependentFixtureInterface
+class CarFixtures extends AbstractFixtures implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {

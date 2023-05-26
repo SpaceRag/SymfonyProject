@@ -6,7 +6,7 @@ use App\Entity\Ride;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class RideFixtures extends AbstractFixture implements DependentFixtureInterface
+class RideFixtures extends AbstractFixtures implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {

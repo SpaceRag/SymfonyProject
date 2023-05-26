@@ -10,7 +10,7 @@ use App\Form\CarType;
 use App\Entity\Ride;
 use App\Form\RideType;
 
-class OffersController extends AbstractController
+class AppController extends AbstractController
 {
     #[Route('/', name: 'offers')]
     public function offers(): Response

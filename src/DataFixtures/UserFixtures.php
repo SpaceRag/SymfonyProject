@@ -5,7 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
 
-class UserFixtures extends AbstractFixture
+class UserFixtures extends AbstractFixtures
 {
 		// La méthode "load" est imposé par la classe Fixture que la classe AbstractFixture étend
 		// C'est cette méthode qui permet de créer des fixtures
@@ -19,11 +19,11 @@ class UserFixtures extends AbstractFixture
             // $user->setName($this->faker->word());
             $user->setEmail($this->faker->email());
             $user->setPassword($this->faker->password());
-            $user->setRoles($this->faker->word());
-            $user->setFirstName($this->faker->firstName());
-            $user->setLastName($this->faker->lastName());
-            $user->setPhone($this->faker->phoneNumber());
-            $user->setCreated($this->faker->dateTime());
+            // $user->setRoles($this->faker->word());
+            // $user->setFirstName($this->faker->firstName());
+            // $user->setLastName($this->faker->lastName());
+            // $user->setPhone($this->faker->phoneNumber());
+            // $user->setCreated($this->faker->dateTime());
 
 
 						// Enregistre le produit fraîchement créé, à faire à chaque tour de boucle
