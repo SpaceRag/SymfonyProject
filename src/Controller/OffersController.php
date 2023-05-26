@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Car;
 use App\Form\CarType;
+use App\Entity\Ride;
+use App\Form\RideType;
 
 #[Route('/offers')]
 
@@ -50,6 +52,30 @@ class OffersController extends AbstractController
         $form = $this->createForm(CarType::class, $Car);
 
         return $this->render('offers/car.html.twig', [
+            'form' => $form
+        ]);
+    }
+
+    #[Route('/addride', name: 'Ride')]
+    public function ride(): Response
+    {
+        $Ride = new Ride();
+
+        $form = $this->createForm(RideType::class, $Ride);
+
+        return $this->render('offers/ride.html.twig', [
+            'form' => $form
+        ]);
+    }
+
+    #[Route('/rides', name: 'Ride')]
+    public function rides(): Response
+    {
+        $Ride = new Ride();
+
+        $form = $this->createForm(RideType::class, $Ride);
+
+        return $this->render('offers/ride.html.twig', [
             'form' => $form
         ]);
     }
