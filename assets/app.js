@@ -11,4 +11,4 @@ import './styles/header.scss';
 import './styles/herobanner.scss';
 import './styles/home.scss';
 // start the Stimulus application
-
+import './bootstrap';
