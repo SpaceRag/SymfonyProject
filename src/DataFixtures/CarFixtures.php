@@ -15,7 +15,7 @@ class CarFixtures extends AbstractFixture implements DependentFixtureInterface
             $car = new Car();
             $car->setBrand($this->faker->word());
             $car->setModel($this->faker->word());
-            $car->setSeats($this->faker->numberBetween());
+            $car->setSeats($this->faker->numberBetween(1, 7));
             $car->setCreated($this->faker->dateTime());
 
             $car->setOwner($this->getReference("user_" . $this->faker->numberBetween(1, 7)));
