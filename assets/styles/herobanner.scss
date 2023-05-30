@@ -8,14 +8,22 @@
   background-image: url(../../public/media/background_remover_hero_banner_png);
   background-repeat: no-repeat;
   background-size: contain;
+  z-index: 1;
 }
 
-.heroTitle {
-  color: white;
-  font-weight: 500;
-  font-size: 5rem;
-  position: fixed;
-  margin-left: 45rem;
-  margin-right: 10rem;
-  margin-top: 150px;
-}
+// .heroTitle {
+//   color: white;
+//   font-weight: 500;
+//   font-size: 5rem;
+//   position: fixed;
+//   margin-top: 150px;
+//   left: 50%;
+//   transform: translateX(-50%);
+// }
+
+// @media screen and (max-width: 768px) {
+//   .heroTitle {
+//     font-size: 3rem;
+//     margin-top: 100px;
+//   }
+// }
