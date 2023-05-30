@@ -6,7 +6,7 @@ use App\Entity\Rule;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class RuleFixtures extends AbstractFixture implements DependentFixtureInterface
+class RuleFixtures extends AbstractFixtures implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {

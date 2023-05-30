@@ -32,7 +32,7 @@ class AppController extends AbstractController
         ]);
     }
 
-    #[Route('/car', name: 'Car')]
+    #[Route('/addcar', name: 'Car')]
     public function car(): Response
     {
         $Car = new Car();
@@ -56,7 +56,7 @@ class AppController extends AbstractController
         ]);
     }
 
-    #[Route('/rides', name: 'Ride')]
+    #[Route('/addrides', name: 'Ride')]
     public function rides(): Response
     {
         $Ride = new Ride();

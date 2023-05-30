@@ -2,11 +2,12 @@
 	<div class="logo">
 	</div>
 	<div class="links">
-		<a href="{{ path('offers') }}">Covoiturage</a>
-		<a href="{{ path('offersDetail') }}">Bus</a>
+		<a href="{{ path('offers') }}">Trajet</a>
+		{# <a href="{{ path('offersDetail') }}"></a> #}
 	</div>
 	<div class="profile">
-		<a href="#">Profil utilisateur</a>
+		<a href="{{ path('app_login') }}">Connexion</a>
+		<a href="{{ path('app_login') }}">Inscription</a>
 		<button>Publier un trajet</button>
 	</div>
 </nav>

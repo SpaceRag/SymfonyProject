@@ -19,11 +19,10 @@ class UserFixtures extends AbstractFixtures
             // $user->setName($this->faker->word());
             $user->setEmail($this->faker->email());
             $user->setPassword($this->faker->password());
-            // $user->setRoles($this->faker->word());
-            // $user->setFirstName($this->faker->firstName());
-            // $user->setLastName($this->faker->lastName());
-            // $user->setPhone($this->faker->phoneNumber());
-            // $user->setCreated($this->faker->dateTime());
+            $user->setFirstName($this->faker->firstName());
+            $user->setLastName($this->faker->lastName());
+            $user->setPhone($this->faker->phoneNumber());
+            $user->setCreated($this->faker->dateTime());
 
 
 						// Enregistre le produit fraîchement créé, à faire à chaque tour de boucle
