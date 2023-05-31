@@ -14,7 +14,7 @@ class RuleType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('author')
+            // ->add('author')
         ;
     }
 

@@ -28,7 +28,7 @@ class Car
 
     #[ORM\ManyToOne(inversedBy: 'cars')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $owner = null;
+    private ?Users $owner = null;
 
     public function getId(): ?int
     {
@@ -83,12 +83,12 @@ class Car
         return $this;
     }
 
-    public function getOwner(): ?user
+    public function getOwner(): ?Users
     {
         return $this->owner;
     }
 
-    public function setOwner(?user $owner): self
+    public function setOwner(?Users $owner): self
     {
         $this->owner = $owner;
 
