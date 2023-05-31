@@ -44,18 +44,6 @@ class AppController extends AbstractController
         ]);
     }
 
-    #[Route('/addride', name: 'Ride')]
-    public function ride(): Response
-    {
-        $Ride = new Ride();
-
-        $form = $this->createForm(RideType::class, $Ride);
-
-        return $this->render('offers/ride.html.twig', [
-            'form' => $form
-        ]);
-    }
-
     #[Route('/addrides', name: 'Ride')]
     public function rides(): Response
     {
