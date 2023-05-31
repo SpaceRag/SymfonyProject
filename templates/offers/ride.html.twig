@@ -9,22 +9,27 @@
 				{{ form_start(form) }}
 				<div class="mb-3">
 					{{ form_row(form.depart, {'attr': {'class': 'form-control'}}) }}
+					{{ form_errors(form.depart) }}
 				</div>
 
 				<div class="mb-3">
 					{{ form_row(form.destination, {'attr': {'class': 'form-control'}}) }}
+					{{ form_errors(form.destination) }}
 				</div>
 
 				<div class="mb-3">
 					{{ form_row(form.seats, {'attr': {'class': 'form-control'}}) }}
+					{{ form_errors(form.seats) }}
 				</div>
 
 				<div class="mb-3">
 					{{ form_row(form.price, {'attr': {'class': 'form-control'}}) }}
+					{{ form_errors(form.price) }}
 				</div>
 
 				<div class="mb-3">
 					{{ form_row(form.date, {'attr': {'class': 'form-control'}}) }}
+					{{ form_errors(form.date) }}
 				</div>
 
 				<button type="submit" class="btn btn-primary">Publier mon trajet</button>

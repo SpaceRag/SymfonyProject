@@ -15,8 +15,8 @@ class CarType extends AbstractType
             ->add('brand')
             ->add('model')
             ->add('seats')
-            ->add('created')
-            ->add('owner')
+            // ->add('created')
+            // ->add('owner')
         ;
     }
 
