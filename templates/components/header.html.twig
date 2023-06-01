@@ -5,10 +5,14 @@
 		<a href="{{ path('offers') }}"><button class="rides">Voir tous les Trajets</button></a>
 	</div>
 	<div class="profile">
+		{% if not app.user %}
 		<a href="{{ path('app_login') }}">Connexion</a>
 		<a href="{{ path('app_register') }}">Inscription</a>
+		{% endif %}
+		{% if app.user %}
 		<a href="{{ path('app_profile') }}">Profil</a>
 		<a href="{{ path('app_logout') }}">Deconnexion</a>
-		<a href="{{ path('Ride') }}"><button>Publier un trajet</button></a>
+		<a href="{{ path('app_rides') }}"><button>Publier un trajet</button></a>
+		{% endif %}
 	</div>
 </nav>
