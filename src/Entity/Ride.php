@@ -36,7 +36,7 @@ class Ride
 
     #[ORM\ManyToOne(inversedBy: 'rides')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $driver = null;
+    private ?Users $driver = null;
 
     #[ORM\ManyToMany(targetEntity: Rule::class, inversedBy: 'rides')]
     private Collection $rules;
@@ -123,12 +123,12 @@ class Ride
         return $this;
     }
 
-    public function getDriver(): ?User
+    public function getDriver(): ?Users
     {
         return $this->driver;
     }
 
-    public function setDriver(?User $driver): self
+    public function setDriver(?Users $driver): self
     {
         $this->driver = $driver;
 
