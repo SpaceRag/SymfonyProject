@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
+use App\Entity\Users;
 use Doctrine\Persistence\ObjectManager;
 
 class UserFixtures extends AbstractFixtures
@@ -15,13 +16,13 @@ class UserFixtures extends AbstractFixtures
         for ($i = 0; $i < 10; $i ++) {
 
 						// Instancie un objet Product avec un nom
-            $user = new User();
+            $user = new Users();
             $user->setEmail($this->faker->email());
             $user->setPassword($this->faker->password());
-            $user->setFirstName($this->faker->firstName());
-            $user->setLastName($this->faker->lastName());
-            $user->setPhone($this->faker->phoneNumber());
-            $user->setCreated($this->faker->dateTime());
+            // $user->setFirstName($this->faker->firstName());
+            // $user->setLastName($this->faker->lastName());
+            // $user->setPhone($this->faker->phoneNumber());
+            // $user->setCreated($this->faker->dateTime());
 
 
 						// Enregistre le produit fraîchement créé, à faire à chaque tour de boucle

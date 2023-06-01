@@ -9,16 +9,27 @@ use App\Entity\Car;
 use App\Form\CarType;
 use App\Entity\Ride;
 use App\Form\RideType;
+use Doctrine\ORM\EntityManagerInterface;
 
 class AppController extends AbstractController
 {
     #[Route('/', name: 'offers')]
-    public function offers(): Response
+    public function offers(EntityManagerInterface $entityManager): Response
     {
+        // Injecter le EntityManagerInterface comme paramètre de la fonction
+					// Récupérer le répertoire de l'entité Product
+					$repository = $entityManager->getRepository(Ride::class);
+				
+					// Cherche plusieurs produits avec un nom correspondant, trier par prix
+					$rides = $repository->findAll();
+
+                    
+					
         $pageTitle = 'Offers';
         return $this->render('offers/offers.html.twig', [
             'controller_name' => 'OffersController',
-            'title' => $pageTitle
+            'title' => $pageTitle,
+            'rides' => $rides
         ]);
     }
 

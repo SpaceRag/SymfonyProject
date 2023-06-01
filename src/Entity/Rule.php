@@ -21,7 +21,7 @@ class Rule
 
     #[ORM\ManyToOne(inversedBy: 'rules')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?users $author = null;
+    private ?Users $author = null;
 
     public function getId(): ?int
     {
@@ -52,12 +52,12 @@ class Rule
         return $this;
     }
 
-    public function getAuthor(): ?users
+    public function getAuthor(): ?Users
     {
         return $this->author;
     }
 
-    public function setAuthor(?users $author): self
+    public function setAuthor(?Users $author): self
     {
         $this->author = $author;
 
