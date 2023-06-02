@@ -8,7 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Car;
 use App\Form\CarType;
 use App\Entity\Ride;
-use App\Form\RideType;
 use Doctrine\ORM\EntityManagerInterface;
 
 class AppController extends AbstractController
@@ -33,16 +32,6 @@ class AppController extends AbstractController
         ]);
     }
 
-    #[Route('/ride/detail', name: 'offersDetail')]
-    public function detail(): Response
-    {
-        $pageTitle = 'Detail';
-        return $this->render('offers/detail.html.twig', [
-            'controller_name' => 'OffersController',
-            'title' => $pageTitle
-        ]);
-    }
-
     #[Route('/addcar', name: 'Car')]
     public function car(): Response
     {
@@ -55,15 +44,4 @@ class AppController extends AbstractController
         ]);
     }
 
-    // #[Route('/addrides', name: 'Ride')]
-    // public function rides(): Response
-    // {
-    //     $Ride = new Ride();
-
-    //     $form = $this->createForm(RideType::class, $Ride);
-
-    //     return $this->render('offers/ride.html.twig', [
-    //         'form' => $form
-    //     ]);
-    // }
 }

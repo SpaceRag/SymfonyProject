@@ -7,13 +7,11 @@
         <div class="row justify-content-center ">
             {% for ride in rides %}
                 <div class="col-md-4 mt-4">
-                    <div class="card">
+                    <div class="card card-glass-effect ">
                         <div class="card-body">
                             <h5 class="card-title">Depart: {{ ride.depart }}</h5>
                             <p class="card-text">Destination: {{ ride.destination }}</p>
-                            {% for users in ride.driver %}
-                            <p class="card-text">Conducteur: {{ driver.firstName }}</p>                                 
-                            {% endfor %}
+                            {# <p class="card-text">Conducteur: {{ ride.driver }}</p>                                  #}
                             {# <p class="card-text">Conducteur: {{ ride.driver }}</p> #}
                             <p class="card-text">Places Dispo: {{ ride.seats }}</p>
                             <p class="card-text">Prix: {{ ride.price }} €</p>
@@ -22,6 +20,7 @@
                             {# <p class="card-text">{{ rule.description }}</p> #}
                             {# <p class="card-text">{{ rule.author }}</p> #}
                             {% endfor %}
+                            <a href="{{ path('app_detail_ride') }}"><button type="submit" class="btn btn-success">Reserver</button></a>
                         </div>
                     </div>
                 </div>

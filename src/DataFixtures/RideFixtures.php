@@ -10,7 +10,7 @@ class RideFixtures extends AbstractFixtures implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        for ($i = 0; $i < 10; $i ++) {
+        for ($i = 0; $i < 6; $i ++) {
 
             $ride = new Ride();
             $ride->setDepart($this->faker->city());
