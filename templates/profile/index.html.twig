@@ -12,15 +12,18 @@
 				<h2 class="mb-3">Configurez votre Vehicule</h2>
 				{{ form_start(carForm) }}
 				<div class="mb-3">
-					{{ form_row(carForm.brand, {'attr': {'class': 'form-control'}}) }}
+					{{ form_label(carForm.brand, 'Marque') }}
+					{{ form_widget(carForm.brand, {'attr': {'class': 'form-control'}}) }}
 				</div>
 				<div class="mb-3">
-					{{ form_row(carForm.model, {'attr': {'class': 'form-control'}}) }}
+					{{ form_label(carForm.model, 'Model') }}
+					{{ form_widget(carForm.model, {'attr': {'class': 'form-control'}}) }}
 				</div>
 				<div class="mb-3">
-					{{ form_row(carForm.seats, {'attr': {'class': 'form-control'}}) }}
+					{{ form_label(carForm.seats, 'Places') }}
+					{{ form_widget(carForm.seats, {'attr': {'class': 'form-control'}}) }}
 				</div>
-				<button type="submit" class="btn btn-primary">Enregistrer votre Vehicule</button>
+				<button type="submit" class="btn btn-success">Enregistrer votre Vehicule</button>
 				{{ form_end(carForm) }}
 				<h2>Vos consignes a bord</h2>
 				{{ form_start(ruleForm) }}
@@ -32,7 +35,7 @@
 					{{ form_label(ruleForm.description, 'Description') }}
 					{{ form_widget(ruleForm.description, { 'attr': {'class': 'form-control'} }) }}
 				</div>
-				<button type="submit" class="btn btn-primary">Enregistrer vos consignes</button>
+				<button type="submit" class="btn btn-success">Enregistrer vos Consignes</button>
 				{{ form_end(ruleForm) }}
 			</div>
 		</div>

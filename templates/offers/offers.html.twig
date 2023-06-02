@@ -1,20 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block pageTitle %}Offers{% endblock %}
+{% block pageTitle %}{% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="row justify-content-center ">
             {% for ride in rides %}
-                <div class="col-md-4">
+                <div class="col-md-4 mt-4">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Depart: {{ ride.depart }}</h5>
                             <p class="card-text">Destination: {{ ride.destination }}</p>
+                            {% for users in ride.driver %}
+                            <p class="card-text">Conducteur: {{ driver.firstName }}</p>                                 
+                            {% endfor %}
+                            {# <p class="card-text">Conducteur: {{ ride.driver }}</p> #}
                             <p class="card-text">Places Dispo: {{ ride.seats }}</p>
                             <p class="card-text">Prix: {{ ride.price }} €</p>
                             {# <p class="card-text">{{ ride.date }}</p> #}
-                            {# <p class="card-text">{{ ride.rules }}</p>  #}
+                            {% for rule in ride.rules %}
+                            {# <p class="card-text">{{ rule.description }}</p> #}
+                            {# <p class="card-text">{{ rule.author }}</p> #}
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
