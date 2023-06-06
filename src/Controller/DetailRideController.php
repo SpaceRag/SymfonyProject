@@ -5,8 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Ride;
+use Doctrine\ORM\EntityManagerInterface;
 
 class DetailRideController extends AbstractController
 {
@@ -14,15 +14,21 @@ class DetailRideController extends AbstractController
     public function index($id, EntityManagerInterface $entityManager): Response
     {
         
-        $ride = $entityManager->getRepository(Ride::class)->find($id);
-
+        // Injecter le EntityManagerInterface comme paramètre de la fonction
+					// Récupérer le répertoire de l'entité
+					$repository = $entityManager->getRepository(Ride::class);
+				
+					
+					$rides = $repository->findAll();
         
-        if (!$ride) {
+        
+        if (!$rides) {
             throw $this->createNotFoundException('Ride non trouvée.');
         }
 
         return $this->render('detail_ride/index.html.twig', [
-            'ride' => $ride,
+            'ride' => $rides,
+            'id' => $id,
         ]);
     }
 }

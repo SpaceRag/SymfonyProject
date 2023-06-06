@@ -3,34 +3,30 @@
 {% block pageTitle %}{% endblock %}
 
 {% block body %}
-	<div class="container">
-		<div class="row justify-content-center ">
-			{% for ride in rides %}
-				<div class="col-md-4 mt-4">
-					<div class="card card-glass-effect ">
-						<div class="card-body">
-							<h5 class="card-title">Depart:
-								{{ ride.depart }}</h5>
-							<p class="card-text">Destination:
-								{{ ride.destination }}</p>
-							{# <p class="card-text">Conducteur: {{ ride.driver }}</p>                                  #}
-							{# <p class="card-text">Conducteur: {{ ride.driver }}</p> #}
-							<p class="card-text">Places Dispo:
-								{{ ride.seats }}</p>
-							<p class="card-text">Prix:
-								{{ ride.price }}
-								€</p>
-							{# <p class="card-text">{{ ride.date }}</p> #}
-							{% for rule in ride.rules %}{# <p class="card-text">{{ rule.description }}</p> #}
-								{# <p class="card-text">{{ rule.author }}</p> #}
-							{% endfor %}
-							<a href="{{ path('app_detail_ride', {'id': ride.id}) }}">
-								<button type="submit" class="btn btn-success">Reserver</button>
-							</a>
-						</div>
-					</div>
-				</div>
-			{% endfor %}
-		</div>
-	</div>
+    <div class="container">
+        <div class="row justify-content-center">
+            {% for ride in rides %}
+                <div class="col-md-4 mt-4">
+                    <div class="card card-glass-effect">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> Depart: {{ ride.depart }}</h5>
+                            <p class="card-text"><i class="fas fa-map-marker-alt"></i> Destination: {{ ride.destination }}</p>
+                            {# <p class="card-text"><i class="fas fa-user"></i> Conducteur: {{ ride.driver }}</p> #}
+                            {# <p class="card-text"><i class="fas fa-user"></i> Conducteur: {{ ride.driver }}</p> #}
+                            <p class="card-text"><i class="fas fa-chair"></i> Places Dispo: {{ ride.seats }}</p>
+                            <p class="card-text"><i class="fas fa-dollar-sign"></i> Prix: {{ ride.price }} €</p>
+                            {# <p class="card-text">{{ ride.date }}</p> #}
+                            {% for rule in ride.rules %}
+                                {# <p class="card-text"><i class="fas fa-exclamation-circle"></i> Consignes: {{ rule.description }}</p> #}
+                                {# <p class="card-text"><i class="fas fa-user"></i> Auteur: {{ rule.author }}</p> #}
+                            {% endfor %}
+                            <a href="{{ path('app_detail_ride', {'id': ride.id}) }}">
+                                <button type="submit" class="btn btn-success"><i class="fas fa-check"></i> Reserver</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

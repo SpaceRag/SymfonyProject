@@ -67,3 +67,28 @@ button:hover {
   color: green;
   margin-left: 200px;
 }
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input[type="text"] {
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+}
+
+.search-bar button {
+  padding: 8px;
+  background-color: #4de65c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.search-bar button:hover {
+  background-color: #64b37f;
+  cursor: pointer;
+}

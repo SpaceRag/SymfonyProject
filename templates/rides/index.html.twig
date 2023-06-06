@@ -3,37 +3,42 @@
 {% block title %}Publier un Trajet !{% endblock %}
 
 {% block body %}
-    <div class="container glass-effect" style="max-height: 800px;">
+    <div class="container-fluid glass-effect" style="max-height: 800px;">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h1 class="mb-4">Créer mon Trajet</h1>
+                <h1 class="mb-4"><i class="fas fa-car"></i> Créer mon Trajet</h1>
                 {{ form_start(rideform) }}
-                <div class="mb-3">
-                    {{ form_row(rideform.depart, {'attr': {'class': 'form-control'}}) }}
+                <div class="form-group mb-4">
+                    <label for="{{ rideform.depart.vars.id }}"><i class="fas fa-map-marker-alt"></i> Départ</label>
+                    {{ form_widget(rideform.depart, {'attr': {'class': 'form-control'}}) }}
                     {{ form_errors(rideform.depart) }}
                 </div>
 
-                <div class="mb-3">
-                    {{ form_row(rideform.destination, {'attr': {'class': 'form-control'}}) }}
+                <div class="form-group mb-4">
+                    <label for="{{ rideform.destination.vars.id }}"><i class="fas fa-map-marker-alt"></i> Destination</label>
+                    {{ form_widget(rideform.destination, {'attr': {'class': 'form-control'}}) }}
                     {{ form_errors(rideform.destination) }}
                 </div>
 
-                <div class="mb-3">
-                    {{ form_row(rideform.seats, {'attr': {'class': 'form-control'}}) }}
+                <div class="form-group mb-4">
+                    <label for="{{ rideform.seats.vars.id }}"><i class="fas fa-chair"></i> Places Disponibles</label>
+                    {{ form_widget(rideform.seats, {'attr': {'class': 'form-control'}}) }}
                     {{ form_errors(rideform.seats) }}
                 </div>
 
-                <div class="mb-3">
-                    {{ form_row(rideform.price, {'attr': {'class': 'form-control'}}) }}
+                <div class="form-group mb-4">
+                    <label for="{{ rideform.price.vars.id }}"><i class="fas fa-euro-sign"></i> Prix</label>
+                    {{ form_widget(rideform.price, {'attr': {'class': 'form-control'}}) }}
                     {{ form_errors(rideform.price) }}
                 </div>
 
-                <div class="mb-3">
-                    {{ form_row(rideform.date, {'attr': {'class': 'form-control'}}) }}
+                <div class="form-group mb-4">
+                    <label for="{{ rideform.date.vars.id }}"><i class="fas fa-calendar-alt"></i> Date</label>
+                    {{ form_widget(rideform.date, {'attr': {'class': 'form-control'}}) }}
                     {{ form_errors(rideform.date) }}
                 </div>
 
-                <button type="submit" class="btn btn-success">Publier mon trajet</button>
+                <button type="submit" class="btn btn-success btn-block"><i class="fas fa-check"></i> Publier mon trajet</button>
                 {{ form_end(rideform) }}
             </div>
         </div>

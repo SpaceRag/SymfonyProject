@@ -51,6 +51,7 @@ class ProfileController extends AbstractController
             'controller_name' => 'ProfileController',
             'carForm' => $carForm->createView(),
             'ruleForm' => $ruleForm->createView()
+            
         ]);
     }
 }
