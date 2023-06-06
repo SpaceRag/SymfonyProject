@@ -1,43 +1,58 @@
 <nav class="navbar">
-    <div class="logo">
-        <a href="{{ path('offers') }}">
-            <div class="logo-container">
-                <i class="fas fa-home"></i>
-            </div>
-        </a>
-    </div>
-    <div class="search-bar">
-        <input type="text" placeholder="Rechercher...">
-        <button type="submit"><i class="fas fa-search"></i></button>
-    </div>
-    <div class="links">
-        <a href="{{ path('offers') }}">
-            <button class="btn btn-success">
-                <i class="fas fa-route"></i> Voir tous les Trajets
-            </button>
-        </a>
-    </div>
-    <div class="profile">
-        {% if not app.user %}
-            <a href="{{ path('app_login') }}" class="btn btn-outline-success">
-                <i class="fas fa-sign-in-alt"></i> Connexion
-            </a>
-            <a href="{{ path('app_register') }}" class="btn btn-outline-success">
-                <i class="fas fa-user-plus"></i> Inscription
-            </a>
-        {% endif %}
-        {% if app.user %}
-            <a href="{{ path('app_profile') }}" class="btn btn-outline-success">
-                <i class="fas fa-user"></i> Profil
-            </a>
-            <a href="{{ path('app_logout') }}" class="btn btn-outline-success">
-                <i class="fas fa-sign-out-alt"></i> Déconnexion
-            </a>
-            <a href="{{ path('app_rides') }}">
-                <button class="btn btn-success">
-                    <i class="fas fa-car"></i> Publier un trajet
-                </button>
-            </a>
-        {% endif %}
-    </div>
+	<input type="checkbox" id="navbar-toggle" class="sr-only">
+	<label for="navbar-toggle" class="navbar-toggle-icon">
+		<span></span>
+		<span></span>
+		<span></span>
+	</label>
+	<div class="logo">
+		<a href="{{ path('offers') }}">
+			<div class="logo-container">
+				<i class="fas fa-home"></i>
+			</div>
+		</a>
+	</div>
+	<div class="search-bar">
+		<form action="{{ path('app_search') }}" method="GET">
+			<input type="text" name="destination" placeholder="Rechercher une destination">
+			<button type="submit">Rechercher</button>
+		</form>
+
+	</div>
+	<div class="links">
+		<a href="{{ path('offers') }}">
+			<button class="btn btn-success">
+				<i class="fas fa-route"></i>
+				Voir tous les Trajets
+			</button>
+		</a>
+	</div>
+	<div class="profile">
+		{% if not app.user %}
+			<a href="{{ path('app_login') }}" class="btn btn-outline-success">
+				<i class="fas fa-sign-in-alt"></i>
+				Connexion
+			</a>
+			<a href="{{ path('app_register') }}" class="btn btn-outline-success">
+				<i class="fas fa-user-plus"></i>
+				Inscription
+			</a>
+		{% endif %}
+		{% if app.user %}
+			<a href="{{ path('app_profile') }}" class="btn btn-outline-success">
+				<i class="fas fa-user"></i>
+				Profil
+			</a>
+			<a href="{{ path('app_logout') }}" class="btn btn-outline-success">
+				<i class="fas fa-sign-out-alt"></i>
+				Déconnexion
+			</a>
+			<a href="{{ path('app_rides') }}">
+				<button class="btn btn-success">
+					<i class="fas fa-car"></i>
+					Publier un trajet
+				</button>
+			</a>
+		{% endif %}
+	</div>
 </nav>

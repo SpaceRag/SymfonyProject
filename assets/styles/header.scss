@@ -66,6 +66,7 @@ button:hover {
 .logo-container i.fa-home {
   color: green;
   margin-left: 200px;
+
 }
 
 .search-bar {
@@ -77,6 +78,7 @@ button:hover {
   padding: 8px;
   border: none;
   border-radius: 4px;
+  background-color: #82d69f;
 }
 
 .search-bar button {
@@ -91,4 +93,64 @@ button:hover {
 .search-bar button:hover {
   background-color: #64b37f;
   cursor: pointer;
+}
+
+/* Styles pour le menu burger */
+.navbar-toggle-icon {
+  display: none; /* Cacher le label par défaut */
+  cursor: pointer;
+}
+
+.navbar-toggle-icon span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #64b37f;
+  margin-bottom: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Styles pour le menu burger actif */
+#navbar-toggle:checked + .navbar-toggle-icon span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+#navbar-toggle:checked + .navbar-toggle-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+#navbar-toggle:checked + .navbar-toggle-icon span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Styles pour le menu déroulant du burger menu */
+#navbar-toggle:checked ~ .links,
+#navbar-toggle:checked ~ .profile {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  /* Cacher la navbar classique */
+  .logo,
+  .search-bar,
+  .links,
+  .profile {
+    display: none;
+  }
+
+  /* Afficher le label du menu burger */
+  .navbar-toggle-icon {
+    display: block;
+  }
+
+  /* Réorganiser la position du label du menu burger */
+  .navbar-toggle-icon {
+    order: 1;
+  }
+  
+  /* Styles pour le menu déroulant du burger menu */
+  #navbar-toggle:checked ~ .logo,
+  #navbar-toggle:checked ~ .search-bar {
+    display: block;
+  }
 }

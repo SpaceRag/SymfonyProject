@@ -36,5 +36,20 @@ class RidesController extends AbstractController
         ]);
     }
 
+    #[Route('/search', name: 'app_search')]
+    public function search(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $destination = $request->query->get('destination');
+
+        // Effectuez la recherche des trajets en fonction de la destination
+        $rides = $entityManager->getRepository(Ride::class)->findByDestination($destination);
+
+        return $this->render('rides/search.html.twig', [
+            'rides' => $rides,
+            'destination' => $destination
+        ]);
+    }
+
+
 
 }
