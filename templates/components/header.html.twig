@@ -1,18 +1,39 @@
 <nav class="navbar">
-	<div class="logo">
-	</div>
-	<div class="links">
-		<a href="{{ path('offers') }}"><button class="rides">Voir tous les Trajets</button></a>
-	</div>
-	<div class="profile">
-		{% if not app.user %}
-		<a href="{{ path('app_login') }}">Connexion</a>
-		<a href="{{ path('app_register') }}">Inscription</a>
-		{% endif %}
-		{% if app.user %}
-		<a href="{{ path('app_profile') }}">Profil</a>
-		<a href="{{ path('app_logout') }}">Deconnexion</a>
-		<a href="{{ path('app_rides') }}"><button>Publier un trajet</button></a>
-		{% endif %}
-	</div>
+    <div class="logo">
+        <a href="{{ path('offers') }}">
+            <div class="logo-container">
+                <i class="fas fa-home"></i>
+            </div>
+        </a>
+    </div>
+    <div class="links">
+        <a href="{{ path('offers') }}">
+            <button class="btn btn-success">
+                <i class="fas fa-route"></i> Voir tous les Trajets
+            </button>
+        </a>
+    </div>
+    <div class="profile">
+        {% if not app.user %}
+            <a href="{{ path('app_login') }}" class="btn btn-outline-success">
+                <i class="fas fa-sign-in-alt"></i> Connexion
+            </a>
+            <a href="{{ path('app_register') }}" class="btn btn-outline-success">
+                <i class="fas fa-user-plus"></i> Inscription
+            </a>
+        {% endif %}
+        {% if app.user %}
+            <a href="{{ path('app_profile') }}" class="btn btn-outline-success">
+                <i class="fas fa-user"></i> Profil
+            </a>
+            <a href="{{ path('app_logout') }}" class="btn btn-outline-success">
+                <i class="fas fa-sign-out-alt"></i> Déconnexion
+            </a>
+            <a href="{{ path('app_rides') }}">
+                <button class="btn btn-success">
+                    <i class="fas fa-car"></i> Publier un trajet
+                </button>
+            </a>
+        {% endif %}
+    </div>
 </nav>

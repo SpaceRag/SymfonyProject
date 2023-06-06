@@ -4,10 +4,29 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container glass-effect">
+	<div class="container glass-effect" style="overflow-y: scroll; max-height: 800px;">
 		<div class="row justify-content-center">
 			<div class="col-md-6">
 				<h1 class="mb-4">Votre Profil</h1>
+				<h2 class="mb-3">Vos Informations</h2>
+				<div class="card card-glass-effect">
+					<div class="card-body ">
+						<h5 class="card-title">Nom d'utilisateur:</h5>
+						<p class="card-text">{{ app.user.firstName }}</p>
+					</div>
+				</div>
+				<div class="card mt-3 card-glass-effect">
+					<div class="card-body">
+						<h5 class="card-title">Email:</h5>
+						<p class="card-text">{{ app.user.email }}</p>
+					</div>
+				</div>
+				<div class="card mt-3 card-glass-effect">
+					<div class="card-body">
+						<h5 class="card-title">Tel:</h5>
+						<p class="card-text">{{ app.user.phone }}</p>
+					</div>
+				</div>
 
 				<h2 class="mb-3">Configurez votre Vehicule</h2>
 				{{ form_start(carForm) }}

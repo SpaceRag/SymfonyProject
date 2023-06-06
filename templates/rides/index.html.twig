@@ -1,42 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Publier un Trajet !
-{% endblock %}
+{% block title %}Publier un Trajet !{% endblock %}
 
 {% block body %}
-	<div class="container glass-effect">
-		<div class="row justify-content-center">
-			<div class="col-md-6">
-				<h1 class="mb-4">Créer mon Trajet</h1>
-				{{ form_start(rideform) }}
-				<div class="mb-3">
-					{{ form_row(rideform.depart, {'attr': {'class': 'form-control'}}) }}
-					{{ form_errors(rideform.depart) }}
-				</div>
+    <div class="container glass-effect" style="max-height: 800px;">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="mb-4">Créer mon Trajet</h1>
+                {{ form_start(rideform) }}
+                <div class="mb-3">
+                    {{ form_row(rideform.depart, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(rideform.depart) }}
+                </div>
 
-				<div class="mb-3">
-					{{ form_row(rideform.destination, {'attr': {'class': 'form-control'}}) }}
-					{{ form_errors(rideform.destination) }}
-				</div>
+                <div class="mb-3">
+                    {{ form_row(rideform.destination, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(rideform.destination) }}
+                </div>
 
-				<div class="mb-3">
-					{{ form_row(rideform.seats, {'attr': {'class': 'form-control'}}) }}
-					{{ form_errors(rideform.seats) }}
-				</div>
+                <div class="mb-3">
+                    {{ form_row(rideform.seats, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(rideform.seats) }}
+                </div>
 
-				<div class="mb-3">
-					{{ form_row(rideform.price, {'attr': {'class': 'form-control'}}) }}
-					{{ form_errors(rideform.price) }}
-				</div>
+                <div class="mb-3">
+                    {{ form_row(rideform.price, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(rideform.price) }}
+                </div>
 
-				<div class="mb-3">
-					{{ form_row(rideform.date, {'attr': {'class': 'form-control'}}) }}
-					{{ form_errors(rideform.date) }}
-				</div>
+                <div class="mb-3">
+                    {{ form_row(rideform.date, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(rideform.date) }}
+                </div>
 
-				<button type="submit" class="btn btn-success">Publier mon trajet</button>
-				{{ form_end(rideform) }}
-			</div>
-		</div>
-	</div>
+                <button type="submit" class="btn btn-success">Publier mon trajet</button>
+                {{ form_end(rideform) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}

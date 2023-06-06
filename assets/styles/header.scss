@@ -56,3 +56,14 @@ button:hover {
   background-color: #64b37f;
   cursor: pointer;
 }
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-container i.fa-home {
+  color: green;
+  margin-left: 200px;
+}
