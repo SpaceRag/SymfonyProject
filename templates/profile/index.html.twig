@@ -1,65 +1,83 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Votre Profil!{% endblock %}
+{% block title %}Votre Profil!
+{% endblock %}
 
 {% block body %}
-    <div class="container-fluid" style="overflow-y: scroll; max-height: 800px;">
-        <div class="row justify-content-center">
-            <div class="col-md-6 mt-5 p-3 card-glass-effect">
-                <h1 class="mb-4">Votre Profil</h1>
-                <h2 class="mb-3">Vos Informations</h2>
-                <div class="card card-glass-effect">
-                    <div class="card-body">
-                        <h5 class="card-title"><i class="fas fa-user"></i> Nom d'utilisateur:</h5>
-                        <p class="card-text">{{ app.user.firstName }}</p>
-                        <a href="#" class="btn btn-outline-success"><i class="fas fa-edit"></i> Modifier</a>
-                    </div>
-                </div>
-                <div class="card mt-3 card-glass-effect">
-                    <div class="card-body">
-                        <h5 class="card-title"><i class="fas fa-envelope"></i> Email:</h5>
-                        <p class="card-text">{{ app.user.email }}</p>
-                        <a href="#" class="btn btn-outline-success"><i class="fas fa-edit"></i> Modifier</a>
-                    </div>
-                </div>
-                <div class="card mt-3 card-glass-effect">
-                    <div class="card-body">
-                        <h5 class="card-title"><i class="fas fa-phone"></i> Tel:</h5>
-                        <p class="card-text">{{ app.user.phone }}</p>
-                        <a href="#" class="btn btn-outline-success"><i class="fas fa-edit"></i> Modifier</a>
-                    </div>
-                </div>
-                
+	<div class="container-fluid" style="overflow-y: scroll; max-height: 800px;">
+		<div class="row justify-content-center">
+			<div class="col-md-6 mt-5 p-3 card-glass-effect">
+				<h1 class="mb-4">Votre Profil</h1>
+				<div class="row">
+					<div class="col">
+						<div class="card border-success mb-3 card-glass-effect" style="max-width: 30rem;">
+							<div class="card-header">Vos Informations</div>
+							<div class="card-body text-success">
+								<h5 class="card-title">
+									<i class="fas fa-user"></i>
+									Nom d'utilisateur:</h5>
+								<p class="card-text">{{ app.user.firstName ~ ' ' ~ app.user.lastName }}</p>
+								<h5 class="card-title">
+									<i class="fas fa-envelope"></i>
+									Email:</h5>
+								<p class="card-text">{{ app.user.email }}</p>
+								<h5 class="card-title">
+									<i class="fas fa-phone"></i>
+									Tel:</h5>
+								<p class="card-text">{{ app.user.phone }}</p>
+								<a href="#" class="btn btn-outline-warning">
+									<i class="fas fa-edit"></i>
+									Modifier</a>
+							</div>
+						</div>
+					</div>
 
-                <h2 class="mb-3">Configurez votre Vehicule</h2>
-                {{ form_start(carForm) }}
-                <div class="mb-3">
-                    {{ form_label(carForm.brand, 'Marque') }}
-                    {{ form_widget(carForm.brand, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                <div class="mb-3">
-                    {{ form_label(carForm.model, 'Model') }}
-                    {{ form_widget(carForm.model, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                <div class="mb-3">
-                    {{ form_label(carForm.seats, 'Places') }}
-                    {{ form_widget(carForm.seats, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Enregistrer votre Vehicule</button>
-                {{ form_end(carForm) }}
-                <h2>Vos consignes a bord</h2>
-                {{ form_start(ruleForm) }}
-                <div class="mb-3">
-                    {{ form_label(ruleForm.name, 'Nom') }}
-                    {{ form_widget(ruleForm.name, { 'attr': {'class': 'form-control'} }) }}
-                </div>
-                <div class="mb-3">
-                    {{ form_label(ruleForm.description, 'Description') }}
-                    {{ form_widget(ruleForm.description, { 'attr': {'class': 'form-control'} }) }}
-                </div>
-                <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Enregistrer vos Consignes</button>
-                {{ form_end(ruleForm) }}
-            </div>
-        </div>
-    </div>
+					<div class="col">
+						<h2 class="mb-3">
+                        <i class="fas fa-car"></i>
+                        Configurez votre Vehicule</h2>
+						{{ form_start(carForm) }}
+						<div class="mb-3">
+							{{ form_label(carForm.brand, 'Marque') }}
+							{{ form_widget(carForm.brand, {'attr': {'class': 'form-control'}}) }}
+						</div>
+						<div class="mb-3">
+							{{ form_label(carForm.model, 'Model') }}
+							{{ form_widget(carForm.model, {'attr': {'class': 'form-control'}}) }}
+						</div>
+						<div class="mb-3">
+							{{ form_label(carForm.seats, 'Places') }}
+							{{ form_widget(carForm.seats, {'attr': {'class': 'form-control'}}) }}
+						</div>
+						<button type="submit" class="btn btn-success">
+							<i class="fas fa-save"></i>
+							Enregistrer votre Vehicule</button>
+						<a href="#" class="btn btn-outline-warning">
+							<i class="fas fa-edit"></i>
+							Modifier</a>
+						{{ form_end(carForm) }}
+						<h2 class="mb-3">
+                            <i class="fa-solid fa-scale-balanced"></i>
+							Vos consignes a bord</h2>
+						{{ form_start(ruleForm) }}
+						<div class="mb-3">
+							{{ form_label(ruleForm.name, 'Regle') }}
+							{{ form_widget(ruleForm.name, { 'attr': {'class': 'form-control'} }) }}
+						</div>
+						<div class="mb-3">
+							{{ form_label(ruleForm.description, 'Description') }}
+							{{ form_widget(ruleForm.description, { 'attr': {'class': 'form-control'} }) }}
+						</div>
+						<button type="submit" class="btn btn-success">
+							<i class="fas fa-save"></i>
+							Enregistrer vos Consignes</button>
+						<a href="#" class="btn btn-outline-warning">
+							<i class="fas fa-edit"></i>
+							Modifier</a>
+						{{ form_end(ruleForm) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
