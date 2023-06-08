@@ -21,6 +21,9 @@
                                 <a href="{{ path('app_detail_ride', {'id': ride.id}) }}">
                                     <button type="submit" class="btn btn-warning"><i class="fas fa-pen"></i> Modifier</button>
                                 </a>
+                                <a href="{{ path('app_detail_ride', {'id': ride.id}) }}">
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer</button>
+                                </a>
                             {% endif %}
                             
                         </div>

@@ -28,14 +28,34 @@
 								<a href="#" class="btn btn-outline-warning">
 									<i class="fas fa-edit"></i>
 									Modifier</a>
+								<div class="mt-5">
+									<h2>
+										<i class="fas fa-bookmark"></i>
+										Vos Trajets Réservés</h2>
+									{# {% if app.user.reservedRides is not empty %}
+										<ul>
+											{% for reservedRide in app.user.reservedRides %}
+												<li>
+													<h5>Départ:
+														{{ reservedRide.depart }}</h5>
+													<p>Destination:
+														{{ reservedRide.destination }}</p>
+													<!-- Ajoutez d'autres détails du trajet réservé ici -->
+												</li>
+											{% endfor %}
+										</ul>
+									{% else %}
+										<p>Vous n'avez pas encore réservé de trajets.</p>
+									{% endif %} #}
+								</div>
 							</div>
 						</div>
 					</div>
 
 					<div class="col">
 						<h2 class="mb-3">
-                        <i class="fas fa-car"></i>
-                        Configurez votre Vehicule</h2>
+							<i class="fas fa-car"></i>
+							Configurez votre Vehicule</h2>
 						{{ form_start(carForm) }}
 						<div class="mb-3">
 							{{ form_label(carForm.brand, 'Marque') }}
@@ -57,7 +77,7 @@
 							Modifier</a>
 						{{ form_end(carForm) }}
 						<h2 class="mb-3">
-                            <i class="fa-solid fa-scale-balanced"></i>
+							<i class="fa-solid fa-scale-balanced"></i>
 							Vos consignes a bord</h2>
 						{{ form_start(ruleForm) }}
 						<div class="mb-3">
