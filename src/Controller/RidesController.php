@@ -41,13 +41,40 @@ class RidesController extends AbstractController
     {
         $destination = $request->query->get('destination');
 
-        // Effectuez la recherche des trajets en fonction de la destination
+        
         $rides = $entityManager->getRepository(Ride::class)->findByDestination($destination);
 
         return $this->render('rides/search.html.twig', [
             'rides' => $rides,
             'destination' => $destination
         ]);
+    }
+
+    #[Route('/rides/{id}/edit', name: 'app_edit_ride')]
+    public function edit(Request $request, EntityManagerInterface $entityManager, Ride $ride): Response
+    {
+        $form = $this->createForm(RideType::class, $ride);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_rides');
+        }
+
+        return $this->render('detail_ride/edit.html.twig', [
+            'ride' => $ride,
+            'form' => $form->createView()
+        ]);
+    } 
+
+    #[Route('/rides/{id}/delete', name: 'app_delete_ride')]
+    public function delete(EntityManagerInterface $entityManager, Ride $ride): Response
+    {
+        $entityManager->remove($ride);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_rides');
     }
 
 

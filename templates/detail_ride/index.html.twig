@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Detail du Trajet!{% endblock %}
+{% block title %}Détail du Trajet!{% endblock %}
 
 {% block body %}
     <div class="container-fluid mb-6">
@@ -10,7 +10,7 @@
                     <div class="col-md-4 mt-4">
                         <div class="card card-glass-effect">
                             <div class="card-body">
-                                <h5><i class="fas fa-map-marker-alt"></i> Depart: {{ ride.depart }}</h5>
+                                <h5><i class="fas fa-map-marker-alt"></i> Départ: {{ ride.depart }}</h5>
                                 <h5><i class="fas fa-map-marker-alt"></i> Destination: {{ ride.destination }}</h5>
                                 <p><i class="fas fa-user"></i> Conducteur: {{ ride.driver.firstName }}</p>
                                 <p><i class="fas fa-chair"></i> Places Dispo: {{ ride.seats }}</p>
@@ -19,7 +19,12 @@
                                 {% for rule in ride.rules %}
                                     <p><i class="fas fa-exclamation-circle"></i> Consignes: {{ rule.description }}</p>
                                 {% endfor %}
-                                <a href="{{ path('app_rides') }}"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i> Reserver</button></a>
+                                {% if app.user and ride.driver == app.user %}
+                                    <a href="{{ path('app_edit_ride', {'id': ride.id}) }}" class="btn btn-warning"><i class="fas fa-edit"></i> Modifier</a>
+                                    <a href="{{ path('app_delete_ride', {'id': ride.id}) }}" class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer</a>
+                                {% else %}
+                                    <a href="{{ path('app_rides') }}" class="btn btn-success"><i class="fas fa-check"></i> Réserver</a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le Trajet{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 mt-5 p-3 card-glass-effect">
+                <h1 class="mb-4">Modifier le Trajet</h1>
+                {{ form_start(form) }}
+                <div class="mb-3">
+                    <i class="fas fa-map-marker-alt"></i>
+                    {{ form_label(form.depart, 'Départ') }}
+                    {{ form_widget(form.depart, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="mb-3">
+                    <i class="fas fa-map-marker-alt"></i>
+                    {{ form_label(form.destination, 'Destination') }}
+                    {{ form_widget(form.destination, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="mb-3">
+                    <i class="fas fa-chair"></i>
+                    {{ form_label(form.seats, 'Places disponibles') }}
+                    {{ form_widget(form.seats, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="mb-3">
+                    <i class="fas fa-dollar-sign"></i>
+                    {{ form_label(form.price, 'Prix') }}
+                    {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="mb-3">
+                    <i class="fas fa-calendar-alt"></i>
+                    {{ form_label(form.date, 'Date') }}
+                    {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <button type="submit" class="btn btn-warning">Enregistrer les modifications</button>
+                <a href="{{ path('offers') }}" class="btn btn-danger">Annuler</a>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
