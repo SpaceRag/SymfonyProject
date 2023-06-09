@@ -1,6 +1,6 @@
 
 
-## SymfonyProjectV1
+# SymfonyProjectV1
 
 La ville de Chambéry souhaite mettre en place un système de covoiturage dans l’agglomération du grand Chambéry. Votre agence a décroché l’appel d’offre pour la version 1 du projet !
 
@@ -20,18 +20,18 @@ Avant de pouvoir exécuter le projet, assurez-vous d'avoir les éléments suivan
 Clonez le projet en utilisant la commande suivante :
 git clone git@github.com:SpaceRag/SymfonyProject.git
 
-# Accédez au répertoire du projet :
+## Accédez au répertoire du projet :
 ```
 cd SymfonyProject/
 ```
 
-# Installez les dépendances PHP et JavaScript en exécutant les commandes suivantes :
+## Installez les dépendances PHP et JavaScript en exécutant les commandes suivantes :
 ```
 composer install
 npm install
 ```
 
-# Modifiez l'URL de la base de données dans le fichier `.env.dist`. 
+## Modifiez l'URL de la base de données dans le fichier `.env.dist`. 
 Remplacez `<MY-DATABASE>` par le nom de votre base de données et configurez les autres paramètres de connexion appropriés : 
 ```
 DATABASE_URL="mysql://app:!ChangeMe!@127.0.0.1:3306/?<VotreDATABASEici>=8.0.32&charset=utf8mb4"
