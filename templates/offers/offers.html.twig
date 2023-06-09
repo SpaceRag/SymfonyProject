@@ -10,10 +10,13 @@
                     <div class="card card-glass-effect">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> Depart: {{ ride.depart }}</h5>
-                            <p class="card-text"><i class="fas fa-map-marker-alt"></i> Destination: {{ ride.destination }}</p>
+                            <h5 class="card-text"><i class="fas fa-map-marker-alt"></i> Destination: {{ ride.destination }}</h5>
+                        <div class="card-glass-effect m-3 p-3 shadow p-3 mb-5 bg-white rounded"
                             <p class="card-text"><i class="fas fa-chair"></i> Places Dispo: {{ ride.seats }}</p>
                             <p class="card-text"><i class="fas fa-dollar-sign"></i> Prix: {{ ride.price }} €</p>
+                            <p class="card-text"><i class="fa-regular fa-id-card"></i> Conducteur: {{ ride.driver.firstName }}</p>
                             <p><i class="fas fa-calendar-alt"></i> Date: {{ ride.date|date('d/m/Y') }}</p>
+                        </div>
                             <a href="{{ path('app_confirm_ride', {'id': ride.id}) }}">
                                 <button type="submit" class="btn btn-success"><i class="fas fa-check"></i> Reserver</button>
                             </a>
