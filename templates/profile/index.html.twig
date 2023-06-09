@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Votre Profil!
+{% block title %}
+	Votre Profil!
 {% endblock %}
 
 {% block body %}
@@ -15,47 +16,66 @@
 							<div class="card-body text-success">
 								<h5 class="card-title">
 									<i class="fas fa-user"></i>
-									Nom d'utilisateur:</h5>
+									Nom d'utilisateur:
+								</h5>
 								<p class="card-text">{{ app.user.firstName ~ ' ' ~ app.user.lastName }}</p>
 								<h5 class="card-title">
 									<i class="fas fa-envelope"></i>
-									Email:</h5>
+									Email:
+								</h5>
 								<p class="card-text">{{ app.user.email }}</p>
 								<h5 class="card-title">
 									<i class="fas fa-phone"></i>
-									Tel:</h5>
+									Tel:
+								</h5>
 								<p class="card-text">{{ app.user.phone }}</p>
-								<a href="#" class="btn btn-outline-warning">
+								<a href="{{ path('app_profile') }}" class="btn btn-outline-warning">
 									<i class="fas fa-edit"></i>
-									Modifier</a>
+									Modifier
+								</a>
 								<div class="mt-5">
 									<h2>
 										<i class="fas fa-bookmark"></i>
-										Vos Trajets Réservés</h2>
-									{# {% if app.user.reservedRides is not empty %}
-										<ul>
-											{% for reservedRide in app.user.reservedRides %}
-												<li>
-													<h5>Départ:
-														{{ reservedRide.depart }}</h5>
-													<p>Destination:
-														{{ reservedRide.destination }}</p>
-													<!-- Ajoutez d'autres détails du trajet réservé ici -->
-												</li>
-											{% endfor %}
-										</ul>
-									{% else %}
-										<p>Vous n'avez pas encore réservé de trajets.</p>
-									{% endif %} #}
+										Vos Trajets publiés
+									</h2>
+								</div>
+								{% if rides is empty %}
+									<p>Aucun trajet publié.</p>
+								{% else %}
+									<ul>
+										{% for ride in rides %}
+											<li>
+												<strong>Départ :</strong>
+												{{ ride.depart }}
+												<br>
+												<strong>Destination :</strong>
+												{{ ride.destination }}
+												<br>
+												<strong>Date :</strong>
+												{{ ride.date|date('d/m/Y') }}
+												<br>
+												<strong>Prix :</strong>
+												{{ ride.price }}
+												€
+											</li>
+										{% endfor %}
+									</ul>
+								{% endif %}
+								<div class="mt-5">
+									<h2>
+										<i class="fas fa-route"></i>
+										Vos Trajets réservés
+									</h2>
 								</div>
 							</div>
 						</div>
 					</div>
 
-					<div class="col">
+					<div class="col mb-4">
 						<h2 class="mb-3">
 							<i class="fas fa-car"></i>
-							Configurez votre Vehicule</h2>
+							Configurez votre Véhicule
+						</h2>
 						{{ form_start(carForm) }}
 						<div class="mb-3">
 							{{ form_label(carForm.brand, 'Marque') }}
@@ -71,17 +91,24 @@
 						</div>
 						<button type="submit" class="btn btn-success">
 							<i class="fas fa-save"></i>
-							Enregistrer votre Vehicule</button>
-						<a href="#" class="btn btn-outline-warning">
+							Enregistrer votre Véhicule
+						</button>
+						<a href="{{ path('app_profile') }}" class="btn btn-outline-warning">
 							<i class="fas fa-edit"></i>
-							Modifier</a>
+							Modifier
+						</a>
+						<a href="{{ path('app_profile') }}" class="btn btn-outline-danger">
+							<i class="fas fa-trash"></i>
+							Supprimer
+						</a>
 						{{ form_end(carForm) }}
 						<h2 class="mb-3">
 							<i class="fa-solid fa-scale-balanced"></i>
-							Vos consignes a bord</h2>
+							Vos consignes à bord
+						</h2>
 						{{ form_start(ruleForm) }}
 						<div class="mb-3">
-							{{ form_label(ruleForm.name, 'Regle') }}
+							{{ form_label(ruleForm.name, 'Règle') }}
 							{{ form_widget(ruleForm.name, { 'attr': {'class': 'form-control'} }) }}
 						</div>
 						<div class="mb-3">
@@ -90,10 +117,16 @@
 						</div>
 						<button type="submit" class="btn btn-success">
 							<i class="fas fa-save"></i>
-							Enregistrer vos Consignes</button>
-						<a href="#" class="btn btn-outline-warning">
+							Enregistrer vos Consignes
+						</button>
+						<a href="{{ path('app_profile') }}" class="btn btn-outline-warning">
 							<i class="fas fa-edit"></i>
-							Modifier</a>
+							Modifier
+						</a>
+						<a href="{{ path('app_profile') }}" class="btn btn-outline-danger">
+							<i class="fas fa-trash"></i>
+							Supprimer
+						</a>
 						{{ form_end(ruleForm) }}
 					</div>
 				</div>

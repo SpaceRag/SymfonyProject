@@ -11,6 +11,7 @@ $footer-link-hover-color: #5ca860;
   position: relative;
   bottom: -600px;
   width: 100%;
+  box-shadow: 4px 1px 4px 4px rgba(0, 0, 0, 0.1); 
 
   h5 {
     color: $footer-text-color;

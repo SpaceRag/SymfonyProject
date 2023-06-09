@@ -11,9 +11,9 @@ class RideFixtures extends AbstractFixtures implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
 
-        $cities = ['Naples', 'Malmö', 'Marseille', 'Acapulco', 'Ciudad Juárez', 'Cape Town'];
+        $cities = ['Naples', 'Lyon', 'Marseille', 'Acapulco', 'Ciudad Juárez', 'Cape Town', 'Mexico', 'Moscou', 'LaZup'];
 
-        for ($i = 0; $i < 6; $i ++) {
+        for ($i = 0; $i < 8; $i ++) {
 
             $ride = new Ride();
             $ride->setDepart($cities[$this->faker->numberBetween(0, 5)]);

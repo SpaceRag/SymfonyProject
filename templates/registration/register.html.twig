@@ -3,9 +3,9 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <div class="container glass-effect">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-6 mt-5 p-3 card-glass-effect">
                 <h1 class="mb-4">Register</h1>
 
                 {{ form_start(registrationForm, {'attr': {'class': 'needs-validation', 'novalidate': ''}}) }}
@@ -14,6 +14,18 @@
                     {{ form_label(registrationForm.email, 'Email', {'label_attr': {'class': 'form-label'}}) }}
                     {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
                     {{ form_errors(registrationForm.email) }}
+                </div>
+                
+                <div class="mb-3">
+                    {{ form_label(registrationForm.firstName, 'First Name', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(registrationForm.firstName, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.firstName) }}
+                </div>
+                
+                <div class="mb-3">
+                    {{ form_label(registrationForm.lastName, 'Last Name', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(registrationForm.lastName, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.lastName) }}
                 </div>
                 
                 <div class="mb-3">
@@ -28,7 +40,7 @@
                     {{ form_errors(registrationForm.agreeTerms) }}
                 </div>
 
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" class="btn btn-success">Register</button>
                 
                 {{ form_end(registrationForm) }}
             </div>

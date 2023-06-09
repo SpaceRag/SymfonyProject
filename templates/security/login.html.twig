@@ -4,9 +4,9 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container glass-effect">
+	<div class="container_fluid ">
 		<div class="row justify-content-center">
-			<div class="col-md-6">
+			<div class="col-md-6 mt-5 p-3 card-glass-effect">
 				<form method="post" class="needs-validation" novalidate>
 					{% if error %}
 						<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -40,7 +40,7 @@
 					</div>
 					
 
-					<button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+					<button class="btn btn-lg btn-success" type="submit">Sign in</button>
 				</form>
 			</div>
 		</div>

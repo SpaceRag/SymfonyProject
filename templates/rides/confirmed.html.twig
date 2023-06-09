@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation de Réservation{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-check-circle text-success"></i> Confirmation de Réservation</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Merci pour votre réservation ! Votre trajet a été réservé avec succès.</p>
+                        <p>Voici les détails de votre réservation :</p>
+                        <ul>
+                            <li><strong><i class="fas fa-map-marker-alt"></i> Départ :</strong> {{ ride.depart }}</li>
+                            <li><strong><i class="fas fa-map-marker-alt"></i> Destination :</strong> {{ ride.destination }}</li>
+                            <li><strong><i class="far fa-calendar-alt"></i> Date :</strong> {{ ride.date|date('d/m/Y') }}</li>
+                            <li><strong><i class="fas fa-dollar-sign"></i> Prix :</strong> {{ ride.price }} €</li>
+                        </ul>
+                        <p>Veuillez contacter le conducteur pour toute autre information.</p> 
+                        <div class="text-center">
+                            <a href="{{ path('app_profile') }}" class="btn btn-success"><i class="fas fa-arrow-left"></i> Retour au Tableau de Bord</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

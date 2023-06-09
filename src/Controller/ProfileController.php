@@ -12,6 +12,7 @@ use App\Form\CarType;
 use App\Form\RuleType;
 use App\Entity\Car;
 use App\Entity\Rule;
+use App\Entity\Ride;
 
 class ProfileController extends AbstractController
 {
@@ -28,10 +29,9 @@ class ProfileController extends AbstractController
         if ($carForm->isSubmitted() && $carForm->isValid()) {
             $car = $carForm->getData();
             $car->setOwner($security->getUser())
-            ->setCreated(new \DateTime());
+                ->setCreated(new \DateTime());
             $entityManager->persist($car);
             $entityManager->flush();
-            
 
             return $this->redirectToRoute('app_profile');
         }
@@ -42,16 +42,20 @@ class ProfileController extends AbstractController
             $rule->setAuthor($security->getUser());
             $entityManager->persist($rule);
             $entityManager->flush();
-           
 
             return $this->redirectToRoute('app_profile');
         }
 
+        
+        $rides = $entityManager->getRepository(Ride::class)->findBy([
+            'driver' => $security->getUser()
+        ]);
+
         return $this->render('profile/index.html.twig', [
             'controller_name' => 'ProfileController',
             'carForm' => $carForm->createView(),
-            'ruleForm' => $ruleForm->createView()
-            
+            'ruleForm' => $ruleForm->createView(),
+            'rides' => $rides
         ]);
     }
 }

@@ -77,6 +77,14 @@ class RidesController extends AbstractController
         return $this->redirectToRoute('app_rides');
     }
 
+    #[Route('/rides/{id}/confirm', name: 'app_confirm_ride')]
+    public function confirmRide(Ride $ride): Response
+    {
+        return $this->render('rides/confirmed.html.twig', [
+            'ride' => $ride,
+        ]);
+    }
 
+    
 
 }
