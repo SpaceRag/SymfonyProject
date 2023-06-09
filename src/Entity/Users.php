@@ -8,6 +8,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\DBAL\Types\Types;
+use Doctrine\Common\Collections\Collection;
+
 
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
@@ -45,6 +47,24 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToOne(mappedBy: 'owner')]
     private ?Car $car = null;
+
+    #[ORM\ManyToMany(targetEntity: Rule::class, inversedBy: 'users')]
+    #[ORM\JoinTable(name: 'user_rule')]
+    private Collection $rules;
+
+    #[ORM\Column(nullable: true)] // Ajoutez cette annotation si la propriété peut être nullable
+    private ?string $rule = null;
+
+    public function getRule(): ?string
+    {
+        return $this->rule;
+    }
+
+    public function setRule(?string $rule): self
+    {
+        $this->rule = $rule;
+        return $this;
+    }
 
     public function getId(): ?int
     {
@@ -175,5 +195,4 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
 }

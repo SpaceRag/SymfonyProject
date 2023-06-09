@@ -29,8 +29,8 @@ class ProfileController extends AbstractController
         $rule = new Rule();
         $ruleForm = $this->createForm(RuleType::class, $rule);
 
-        
- 
+
+
 
         $carForm->handleRequest($request);
         if ($carForm->isSubmitted() && $carForm->isValid()) {
@@ -53,7 +53,7 @@ class ProfileController extends AbstractController
             return $this->redirectToRoute('app_profile');
         }
 
-        
+
         $rides = $entityManager->getRepository(Ride::class)->findBy([
             'driver' => $security->getUser()
         ]);
@@ -61,7 +61,7 @@ class ProfileController extends AbstractController
         $rules = $entityManager->getRepository(Rule::class)->findBy([
             'author' => $security->getUser()
         ]);
-        
+
 
         $user = $security->getUser();
         $car = $user->getCar();
@@ -80,21 +80,69 @@ class ProfileController extends AbstractController
 
     #[Route('/profile/edit', name: 'app_edit_profile')]
     public function edit(Request $request, EntityManagerInterface $entityManager): Response
-{
-    $user = $this->getUser();
+    {
+        $user = $this->getUser();
 
-    $form = $this->createForm(RegistrationFormType::class, $user);
-    $form->handleRequest($request);
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
 
-    if ($form->isSubmitted() && $form->isValid()) {
-        $entityManager->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
 
-        return $this->redirectToRoute('app_profile');
+            return $this->redirectToRoute('app_profile');
+        }
+
+        return $this->render('profile/edit.html.twig', [
+            'form' => $form->createView(),
+            'registrationForm' => $form->createView(),
+        ]);
     }
 
-    return $this->render('profile/edit.html.twig', [
-        'form' => $form->createView(),
-        'registrationForm' => $form->createView(),
-    ]);
-}
+    #[Route('/profile/car/edit', name: 'app_edit_car')]
+    public function editCar(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+        $car = $user->getCar();
+
+        if ($car === null) {
+            throw $this->createNotFoundException('No car found for this user.');
+        }
+
+        $form = $this->createForm(CarType::class, $car);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_profile');
+        }
+
+        return $this->render('profile/edit_car.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/profile/rules/edit', name: 'app_edit_rule')]
+    public function editRule(Request $request, Rule $rule, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+        $rule = $user->getRule();
+
+        $form = $this->createForm(RuleType::class, $rule);
+        $form->handleRequest($request);
+    
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+    
+            $this->addFlash('success', 'La consigne a été modifiée avec succès.');
+    
+            return $this->redirectToRoute('app_profile');
+        }
+    
+        return $this->render('profile/edit_rule.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+
 }
