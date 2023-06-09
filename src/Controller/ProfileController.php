@@ -13,6 +13,10 @@ use App\Form\RuleType;
 use App\Entity\Car;
 use App\Entity\Rule;
 use App\Entity\Ride;
+use App\Form\RegistrationFormType;
+
+
+
 
 class ProfileController extends AbstractController
 {
@@ -24,6 +28,9 @@ class ProfileController extends AbstractController
 
         $rule = new Rule();
         $ruleForm = $this->createForm(RuleType::class, $rule);
+
+        
+ 
 
         $carForm->handleRequest($request);
         if ($carForm->isSubmitted() && $carForm->isValid()) {
@@ -51,11 +58,43 @@ class ProfileController extends AbstractController
             'driver' => $security->getUser()
         ]);
 
+        $rules = $entityManager->getRepository(Rule::class)->findBy([
+            'author' => $security->getUser()
+        ]);
+        
+
+        $user = $security->getUser();
+        $car = $user->getCar();
+        $user = $this->getUser();
+
+
         return $this->render('profile/index.html.twig', [
             'controller_name' => 'ProfileController',
             'carForm' => $carForm->createView(),
             'ruleForm' => $ruleForm->createView(),
-            'rides' => $rides
+            'rides' => $rides,
+            'car' => $car,
+            'rules' => $rules
         ]);
     }
+
+    #[Route('/profile/edit', name: 'app_edit_profile')]
+    public function edit(Request $request, EntityManagerInterface $entityManager): Response
+{
+    $user = $this->getUser();
+
+    $form = $this->createForm(RegistrationFormType::class, $user);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_profile');
+    }
+
+    return $this->render('profile/edit.html.twig', [
+        'form' => $form->createView(),
+        'registrationForm' => $form->createView(),
+    ]);
+}
 }

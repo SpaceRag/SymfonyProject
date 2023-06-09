@@ -29,10 +29,38 @@
 									Tel:
 								</h5>
 								<p class="card-text">{{ app.user.phone }}</p>
-								<a href="{{ path('app_profile') }}" class="btn btn-outline-warning">
+								<a href="{{ path('app_edit_profile') }}" class="btn btn-outline-warning">
 									<i class="fas fa-edit"></i>
 									Modifier
 								</a>
+
+								<h2 class="mb-3">
+									<i class="fas fa-car"></i>
+									Votre véhicule
+								</h2>
+
+								{% if car is not null %}
+									<p>Marque:
+										{{ car.getBrand() }}</p>
+									<p>Modèle:
+										{{ car.getModel() }}</p>
+									<p>Places:
+										{{ car.getSeats() }}</p>
+								{% else %}
+									<p>Aucun véhicule enregistré.</p>
+								{% endif %}
+								<h2>Vos règles</h2>
+								{% if rules is empty %}
+									<p>Aucune règle créée.</p>
+								{% else %}
+									<ul>
+										{% for rule in rules %}
+											<li>{{ rule.name }}</li>
+											<li>{{ rule.description }}</li>
+										{% endfor %}
+									</ul>
+								{% endif %}
+
 								<div class="mt-5">
 									<h2>
 										<i class="fas fa-bookmark"></i>
@@ -66,6 +94,9 @@
 										<i class="fas fa-route"></i>
 										Vos Trajets réservés
 									</h2>
+									<h3>
+									En cours de dev..
+									</h3>
 								</div>
 							</div>
 						</div>
