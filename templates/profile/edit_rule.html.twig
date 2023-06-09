@@ -1,32 +1,44 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Modifier une règle
+	Modifier une règle
 {% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-md-6 mt-5 p-3 card-glass-effect">
-                <h1 class="mb-4">Modifier une règle</h1>
-                {{ form_start(form) }}
-                <div class="mb-3">
-                    {{ form_label(form.name, 'Règle') }}
-                    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                <div class="mb-3">
-                    {{ form_label(form.description, 'Description') }}
-                    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                <button type="submit" class="btn btn-success">
-                    <i class="fas fa-save"></i>
-                    Enregistrer
-                </button>
-                <a href="{{ path('app_profile') }}" class="btn btn-outline-secondary">
-                    Annuler
-                </a>
-                {{ form_end(form) }}
-            </div>
-        </div>
-    </div>
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-md-6 mt-5 p-3 card-glass-effect">
+				<h2>
+					<i class="fa-solid fa-triangle-exclamation"></i>Vos règles</h2>
+				{% if rules is empty %}
+					<p>Aucune règle créée.</p>
+				{% else %}
+					<ul>
+						{% for rule in rules %}
+							<li>{{ rule.name }}</li>
+							<li>{{ rule.description }}</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+				<h1 class="mb-4">Modifier une règle</h1>
+				{{ form_start(form) }}
+				<div class="mb-3">
+					{{ form_label(form.name, 'Règle') }}
+					{{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="mb-3">
+					{{ form_label(form.description, 'Description') }}
+					{{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<button type="submit" class="btn btn-success">
+					<i class="fas fa-save"></i>
+					Enregistrer
+				</button>
+				<a href="{{ path('app_profile') }}" class="btn btn-outline-secondary">
+					Annuler
+				</a>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
 {% endblock %}

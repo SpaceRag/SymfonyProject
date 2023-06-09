@@ -123,24 +123,27 @@ class ProfileController extends AbstractController
     }
 
     #[Route('/profile/rules/edit', name: 'app_edit_rule')]
-    public function editRule(Request $request, Rule $rule, EntityManagerInterface $entityManager): Response
+    public function editRule(Request $request, Rule $rule, EntityManagerInterface $entityManager, Security $security): Response
     {
         $user = $this->getUser();
         $rule = $user->getRule();
 
         $form = $this->createForm(RuleType::class, $rule);
         $form->handleRequest($request);
+
+        $rules = $entityManager->getRepository(Rule::class)->findBy([
+            'author' => $security->getUser()
+        ]);
     
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
-    
-            $this->addFlash('success', 'La consigne a été modifiée avec succès.');
     
             return $this->redirectToRoute('app_profile');
         }
     
         return $this->render('profile/edit_rule.html.twig', [
             'form' => $form->createView(),
+            'rules' => $rules
         ]);
     }
 
